@@ -20,6 +20,9 @@ COPY manifest.webmanifest /app/client/public/manifest.webmanifest
 # Copy all assets to public/images directory
 COPY assets/* /app/client/public/images/
 
-# Build the client application
+# Install font packages
 WORKDIR /app/client
-RUN npm install && npm run build
+RUN npm install @fontsource/dm-sans @fontsource/ovo
+
+# Build the client application
+RUN npm run build
