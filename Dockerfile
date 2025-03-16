@@ -14,8 +14,5 @@ COPY assets/berget-icon-white.svg /app/client/dist/assets/
 COPY manifest.webmanifest /app/client/dist/manifest.webmanifest
 
 # Copy the script to modify the index.html file
-COPY modify-index.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
-
-# Set the entrypoint to run our script and then start the server
-ENTRYPOINT ["/bin/bash", "-c", "/docker-entrypoint.sh && node /app/api/server/index.js"]
+COPY modify-index.sh /app/modify-index.sh
+RUN /app/modify-index.sh
