@@ -4,8 +4,8 @@
   "description": "Berget AI - Ingen data lämnar Sverige 🇪🇺 GDPR säkert",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#171717",
+  "background_color": "#1a1a1a",
+  "theme_color": "#1a1a1a",
   "icons": [
     {
       "src": "/assets/berget-icon-black-16x16.png",
