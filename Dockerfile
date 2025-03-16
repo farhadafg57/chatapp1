@@ -21,8 +21,11 @@ COPY manifest.webmanifest /app/client/public/manifest.webmanifest
 COPY assets/* /app/client/public/images/
 
 # Install font packages
-WORKDIR /app/client
-RUN npm install @fontsource/dm-sans @fontsource/ovo
+WORKDIR /app
+RUN npm install -w @librechat/frontend @fontsource/dm-sans @fontsource/ovo
 
-# Build the client application
-RUN npm run build
+# Build the client application using the workspace command
+RUN npm run build:client
+
+# Make sure we're using the correct entrypoint
+ENTRYPOINT ["npm", "run", "start"]
