@@ -3,9 +3,6 @@ name: Build and Push Docker Image
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'chat/**'
-      - '.github/workflows/docker-build.yml'
   workflow_dispatch:
 
 jobs:
@@ -32,7 +29,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: ./chat
           push: true
           tags: |
             ghcr.io/berget-cloud/chat:latest
