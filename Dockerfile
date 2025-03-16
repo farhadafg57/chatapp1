@@ -1,7 +1,7 @@
 FROM ghcr.io/danny-avila/librechat:latest
 
 # Create necessary directories
-RUN mkdir -p /app/client/public/assets
+RUN mkdir -p /app/client/public/assets /app/client/public/images
 
 # Add custom index.html to the client folder
 COPY index.html /app/client/index.html
@@ -13,6 +13,7 @@ COPY assets/berget-icon-black.svg /app/client/public/assets/
 COPY assets/berget-icon-black-64x64.png /app/client/public/assets/
 COPY assets/berget-icon-black-128x128.png /app/client/public/assets/
 COPY assets/berget-icon-black-128x128.png /app/client/public/assets/maskable-icon.png
+COPY assets/berget-icon-white.svg /app/client/public/assets/
 
 # Add manifest file to public directory
 COPY manifest.webmanifest /app/client/public/manifest.webmanifest
@@ -22,10 +23,13 @@ COPY assets/* /app/client/public/images/
 
 # Install font packages
 WORKDIR /app
-RUN npm install -w @librechat/frontend @fontsource/dm-sans @fontsource/ovo
+RUN npm install @fontsource/dm-sans @fontsource/ovo
 
-# Build the client application using the workspace command
-RUN npm run build:client
+# Build the client application using the correct workspace commands
+RUN npm run build:data-provider && \
+    npm run build:mcp && \
+    npm run build:data-schemas && \
+    cd client && npm run build
 
 # Make sure we're using the correct entrypoint
-ENTRYPOINT ["npm", "run", "start"]
+ENTRYPOINT ["npm", "run", "backend"]
