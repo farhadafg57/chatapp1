@@ -2,7 +2,7 @@
 <html lang="sv-SE">
   <head>
     <meta charset="utf-8" />
-    <meta name="theme-color" content="#171717" />
+    <meta name="theme-color" content="#1a1a1a" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -52,6 +52,8 @@
           ),
           linear-gradient(to right, rgba(229, 221, 213, 0.02) 1px, transparent 1px);
         background-size: 24px 24px;
+        color: var(--color-text);
+        background-color: var(--color-background);
       }
 
       h1,
@@ -101,7 +103,9 @@
   </head>
   <body>
     <div id="root">
-      <div id="loading-container"></div>
+      <div id="loading-container">
+        <img src="/assets/berget-icon-white.svg" alt="Berget AI Logo" style="width: 80px; height: 80px;" />
+      </div>
     </div>
   </body>
 </html>
