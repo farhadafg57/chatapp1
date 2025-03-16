@@ -26,10 +26,7 @@ WORKDIR /app
 RUN npm install @fontsource/dm-sans @fontsource/ovo
 
 # Build the client application using the correct workspace commands
-RUN npm run build:data-provider && \
-    npm run build:mcp && \
-    npm run build:data-schemas && \
-    cd client && npm run build
+RUN npm run b:client 
 
 # Make sure we're using the correct entrypoint
 ENTRYPOINT ["npm", "run", "backend"]
