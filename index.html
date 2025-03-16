@@ -16,11 +16,29 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content" />
     <style>
+      @import '@fontsource/dm-sans';
+      @import '@fontsource/ovo';
+
       html,
       body {
         margin: 0;
         padding: 0;
         height: 100%;
+      }
+
+      @layer base {
+        body {
+          font-family: 'DM Sans', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-family: 'Ovo', serif;
+        }
       }
     </style>
     <script>
