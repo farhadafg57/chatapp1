@@ -15,7 +15,7 @@ COPY manifest.webmanifest /app/client/dist/manifest.webmanifest
 
 # Install required font packages
 WORKDIR /app
-RUN cd client && npm install @fontsource/dm-sans @fontsource/ovo
+#RUN cd client && npm install @fontsource/dm-sans @fontsource/ovo
 
 # Copy the script to modify the index.html file
 COPY modify-index.sh /app/modify-index.sh
