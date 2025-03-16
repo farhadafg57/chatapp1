@@ -1,10 +1,22 @@
 #!/bin/bash
 
+# Print debugging information
+echo "Starting index.html customization..."
+echo "Current directory: $(pwd)"
+echo "Checking if index.html exists: $(ls -la /app/client/dist/index.html 2>/dev/null || echo 'File not found')"
+
+# Check if the file exists before attempting modifications
+if [ ! -f "/app/client/dist/index.html" ]; then
+    echo "ERROR: /app/client/dist/index.html does not exist!"
+    echo "Available files in /app/client/dist:"
+    ls -la /app/client/dist/ || echo "Cannot access directory"
+    exit 1
+fi
+
 echo "Replace title, description, and language......"
 sed -i "s|<title>LibreChat</title>|<title>Berget AI</title>|g" /app/client/dist/index.html
 sed -i "s|<meta name=\"description\" content=\"LibreChat - An open source chat application with support for multiple AI models\" />|<meta name=\"description\" content=\"Berget AI - Ingen data lämnar Sverige 🇪🇺 GDPR säkert\" />|g" /app/client/dist/index.html
 sed -i "s|<html lang=\"en-US\">|<html lang=\"sv-SE\">|g" /app/client/dist/index.html
-
 
 echo "Add font imports..."
 sed -i "/<style>/a \
@@ -44,3 +56,9 @@ sed -i "/<style>/a \
 
 echo "Add custom icon links..."
 sed -i "s|<link rel=\"shortcut icon\" href=\"#\" />|<link rel=\"shortcut icon\" href=\"#\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/assets/berget-icon-black.svg\" media=\"(prefers-color-scheme: light)\" />\n    <link rel=\"icon\" type=\"image/svg+xml\" href=\"/assets/berget-icon-white.svg\" media=\"(prefers-color-scheme: dark)\" />|g" /app/client/dist/index.html
+
+# Add loading logo to the loading container
+echo "Adding loading logo to the loading container..."
+sed -i "s|<div id=\"loading-container\"></div>|<div id=\"loading-container\"><img src=\"/assets/berget-icon-white.svg\" alt=\"Berget AI Logo\" style=\"width: 80px; height: 80px;\" /></div>|g" /app/client/dist/index.html
+
+echo "Customization completed successfully!"

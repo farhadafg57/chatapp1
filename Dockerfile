@@ -13,6 +13,10 @@ COPY assets/berget-icon-white.svg /app/client/dist/assets/
 # Copy our manifest file
 COPY manifest.webmanifest /app/client/dist/manifest.webmanifest
 
+# Install required font packages
+WORKDIR /app
+RUN cd client && npm install @fontsource/dm-sans @fontsource/ovo
+
 # Copy the script to modify the index.html file
 COPY modify-index.sh /app/modify-index.sh
-RUN /app/modify-index.sh
+RUN chmod +x /app/modify-index.sh && /app/modify-index.sh
