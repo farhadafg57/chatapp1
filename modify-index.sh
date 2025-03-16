@@ -20,8 +20,8 @@ sed -i "s|<html lang=\"en-US\">|<html lang=\"sv-SE\">|g" /app/client/dist/index.
 
 echo "Add font imports..."
 sed -i "/<style>/a \
-      @import '@fontsource/dm-sans';\n\
-      @import '@fontsource/ovo';" /app/client/dist/index.html
+      @import '/assets/fonts/dm-sans.css';\n\
+      @import '/assets/fonts/ovo.css';" /app/client/dist/index.html
 
 echo "Update CSS variables and styling..."
 sed -i "s|body {|body {\n        font-family: 'DM Sans', sans-serif;\n        font-feature-settings: 'ss01', 'ss02', 'cv01', 'cv02';\n        background-image: linear-gradient(to bottom, rgba(229, 221, 213, 0.02) 1px, transparent 1px), linear-gradient(to right, rgba(229, 221, 213, 0.02) 1px, transparent 1px);\n        background-size: 24px 24px;|g" /app/client/dist/index.html

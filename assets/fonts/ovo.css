@@ -1,0 +1,7 @@
+/* ovo-regular - latin */
+@font-face {
+  font-family: 'Ovo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./ovo-regular.woff2') format('woff2');
+}
